@@ -4,7 +4,7 @@
 void main() {
 	try {
 		string file = "data.txt";
-		string content = "This is Test!";
+		string content = "This is Test!\n中文\n";
 
 		FileUtils.set_contents(file, content);
 
