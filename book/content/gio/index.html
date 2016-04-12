@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>file set conetnts | Vala 學習筆記</title>
+        <title>gio | Vala 學習筆記</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.6">
@@ -39,10 +39,10 @@
         
     
     
-    <link rel="next" href="../../content/gio/index.html" />
+    <link rel="next" href="../../content/gio/gsettings.html" />
     
     
-    <link rel="prev" href="../../content/file/file-get-contents.html" />
+    <link rel="prev" href="../../content/file/file-set-contents.html" />
     
 
         
@@ -51,9 +51,9 @@
         
         
     <div class="book"
-        data-level="3.2"
-        data-chapter-title="file set conetnts"
-        data-filepath="content/file/file-set-contents.md"
+        data-level="4"
+        data-chapter-title="gio"
+        data-filepath="content/gio/index.md"
         data-basepath="../.."
         data-revision="Tue Apr 12 2016 22:10:12 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -277,7 +277,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.2" data-path="content/file/file-set-contents.html">
+        <li class="chapter " data-level="3.2" data-path="content/file/file-set-contents.html">
             
                 
                     <a href="../../content/file/file-set-contents.html">
@@ -297,7 +297,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4" data-path="content/gio/index.html">
+        <li class="chapter active" data-level="4" data-path="content/gio/index.html">
             
                 
                     <a href="../../content/gio/index.html">
@@ -366,28 +366,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="file-set-contents">file set contents</h1>
-<p><a href="../../example/file/file-set-contents/file-set-contents.vala">&#x7A0B;&#x5F0F;&#x78BC;</a></p>
-<pre><code class="lang-vala"><span class="hljs-keyword">void</span> main() {
-    <span class="hljs-keyword">try</span> {
-        <span class="hljs-keyword">string</span> file = <span class="hljs-string">&quot;data.txt&quot;</span>;
-        <span class="hljs-keyword">string</span> content = <span class="hljs-string">&quot;This is Test!&quot;</span>;
-
-        FileUtils.set_contents(file, content);
-
-    } <span class="hljs-keyword">catch</span> (FileError e) {
-        <span class="hljs-keyword">stderr</span>.printf(<span class="hljs-string">&quot;%s\n&quot;</span>, e.message);
-    }
-}
-</code></pre>
-<h2 id="api">Api</h2>
-<ul>
-<li><a href="http://www.valadoc.org/#!api=glib-2.0/GLib.FileUtils" target="_blank">GLib.FileUtils</a> / <a href="http://www.valadoc.org/#!api=glib-2.0/GLib.FileUtils.set_contents" target="_blank">set_contents</a></li>
-</ul>
-<h2 id="&#x53C3;&#x8003;&#x4F86;&#x6E90;">&#x53C3;&#x8003;&#x4F86;&#x6E90;</h2>
-<ul>
-<li>Basic Vala Samples / <a href="https://wiki.gnome.org/Projects/Vala/BasicSample#Reading_and_Writing_Text_File_Content" target="_blank">Reading and Writing Text File Content</a></li>
-</ul>
+                        <h1 id="gio">gio</h1>
 
                     
                     </section>
@@ -398,10 +377,10 @@
         </div>
 
         
-        <a href="../../content/file/file-get-contents.html" class="navigation navigation-prev " aria-label="Previous page: file get contents"><i class="fa fa-angle-left"></i></a>
+        <a href="../../content/file/file-set-contents.html" class="navigation navigation-prev " aria-label="Previous page: file set conetnts"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../content/gio/index.html" class="navigation navigation-next " aria-label="Next page: gio"><i class="fa fa-angle-right"></i></a>
+        <a href="../../content/gio/gsettings.html" class="navigation navigation-next " aria-label="Next page: gsettings"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

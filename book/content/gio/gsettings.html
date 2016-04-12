@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>file set conetnts | Vala 學習筆記</title>
+        <title>gsettings | Vala 學習筆記</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.6">
@@ -39,10 +39,8 @@
         
     
     
-    <link rel="next" href="../../content/gio/index.html" />
     
-    
-    <link rel="prev" href="../../content/file/file-get-contents.html" />
+    <link rel="prev" href="../../content/gio/index.html" />
     
 
         
@@ -51,9 +49,9 @@
         
         
     <div class="book"
-        data-level="3.2"
-        data-chapter-title="file set conetnts"
-        data-filepath="content/file/file-set-contents.md"
+        data-level="4.1"
+        data-chapter-title="gsettings"
+        data-filepath="content/gio/gsettings.md"
         data-basepath="../.."
         data-revision="Tue Apr 12 2016 22:10:12 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -277,7 +275,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.2" data-path="content/file/file-set-contents.html">
+        <li class="chapter " data-level="3.2" data-path="content/file/file-set-contents.html">
             
                 
                     <a href="../../content/file/file-set-contents.html">
@@ -313,7 +311,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.1" data-path="content/gio/gsettings.html">
+        <li class="chapter active" data-level="4.1" data-path="content/gio/gsettings.html">
             
                 
                     <a href="../../content/gio/gsettings.html">
@@ -366,29 +364,161 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="file-set-contents">file set contents</h1>
-<p><a href="../../example/file/file-set-contents/file-set-contents.vala">&#x7A0B;&#x5F0F;&#x78BC;</a></p>
-<pre><code class="lang-vala"><span class="hljs-keyword">void</span> main() {
-    <span class="hljs-keyword">try</span> {
-        <span class="hljs-keyword">string</span> file = <span class="hljs-string">&quot;data.txt&quot;</span>;
-        <span class="hljs-keyword">string</span> content = <span class="hljs-string">&quot;This is Test!&quot;</span>;
-
-        FileUtils.set_contents(file, content);
-
-    } <span class="hljs-keyword">catch</span> (FileError e) {
-        <span class="hljs-keyword">stderr</span>.printf(<span class="hljs-string">&quot;%s\n&quot;</span>, e.message);
-    }
-}
-</code></pre>
-<h2 id="api">Api</h2>
-<ul>
-<li><a href="http://www.valadoc.org/#!api=glib-2.0/GLib.FileUtils" target="_blank">GLib.FileUtils</a> / <a href="http://www.valadoc.org/#!api=glib-2.0/GLib.FileUtils.set_contents" target="_blank">set_contents</a></li>
-</ul>
+                        <h1 id="gsettings">gsettings</h1>
 <h2 id="&#x53C3;&#x8003;&#x4F86;&#x6E90;">&#x53C3;&#x8003;&#x4F86;&#x6E90;</h2>
+<p>&#x6B64;&#x6848;&#x4F8B;&#x7684;&#x7A0B;&#x5F0F;&#x78BC;&#x4F86;&#x81EA;&#x65BC;&#x300C;<a href="https://wiki.gnome.org/Projects/Vala/GSettingsSample" target="_blank">Vala Settings Sample</a>&#x300D;&#x3002;</p>
+<p>&#x5176;&#x4ED6;&#x76F8;&#x95DC;&#x7DB2;&#x5740;</p>
 <ul>
-<li>Basic Vala Samples / <a href="https://wiki.gnome.org/Projects/Vala/BasicSample#Reading_and_Writing_Text_File_Content" target="_blank">Reading and Writing Text File Content</a></li>
+<li><a href="https://developer.gnome.org/gio/stable/GSettings.html" target="_blank">https://developer.gnome.org/gio/stable/GSettings.html</a></li>
+<li><a href="https://developer.gnome.org/gio/stable/gsettings-tool.html" target="_blank">https://developer.gnome.org/gio/stable/gsettings-tool.html</a></li>
+<li><a href="http://www.valadoc.org/#!api=gio-2.0/GLib.Settings" target="_blank">http://www.valadoc.org/#!api=gio-2.0/GLib.Settings</a> </li>
 </ul>
+<h2 id="&#x524D;&#x7F6E;&#x4F5C;&#x696D;">&#x524D;&#x7F6E;&#x4F5C;&#x696D;</h2>
+<p>&#x6E96;&#x5099;&#x300C;/usr/share/glib-2.0/schemas/org.example.my-app.gschema.xml&#x300D;</p>
+<p><a href="../../example/gio/gsettings/gsettings-start/create.sh">create.sh</a></p>
+<pre><code>cat &gt; org.example.my-app.gschema.xml &lt;&lt;EOF
+&lt;schemalist&gt;
+    &lt;schema id=&quot;org.example.my-app&quot; path=&quot;/org/example/my-app/&quot; gettext-domain=&quot;my-app&quot;&gt;
 
+        &lt;key name=&quot;greeting&quot; type=&quot;s&quot;&gt;
+            &lt;default l10n=&quot;messages&quot;&gt;&quot;Hello, earthlings&quot;&lt;/default&gt;
+            &lt;summary&gt;A greeting&lt;/summary&gt;
+            &lt;description&gt;
+                Greeting of the invading martians
+            &lt;/description&gt;
+        &lt;/key&gt;
+
+        &lt;key name=&quot;bottles-of-beer&quot; type=&quot;i&quot;&gt;
+            &lt;default&gt;99&lt;/default&gt;
+            &lt;summary&gt;Bottles of beer&lt;/summary&gt;
+            &lt;description&gt;
+                Number of bottles of beer on the wall
+            &lt;/description&gt;
+        &lt;/key&gt;
+
+        &lt;key name=&quot;lighting&quot; type=&quot;b&quot;&gt;
+            &lt;default&gt;false&lt;/default&gt;
+            &lt;summary&gt;Is the light switched on?&lt;/summary&gt;
+            &lt;description&gt;
+                State of an imaginary light switch.
+            &lt;/description&gt;
+        &lt;/key&gt;
+
+    &lt;/schema&gt;
+&lt;/schemalist&gt;
+
+EOF
+
+sudo cp org.example.my-app.gschema.xml /usr/share/glib-2.0/schemas/
+sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
+</code></pre><h2 id="&#x4E3B;&#x7A0B;&#x5F0F;">&#x4E3B;&#x7A0B;&#x5F0F;</h2>
+<p><a href="../../example/gio/gsettings/gsettings-start/gio-settings-demo.vala">gio-settings-demo.vala</a></p>
+<pre><code>void main () {
+    var settings = new Settings (&quot;org.example.my-app&quot;);
+
+    // Getting keys
+    var greeting = settings.get_string (&quot;greeting&quot;);
+    var bottles = settings.get_int (&quot;bottles-of-beer&quot;);
+    var lighting = settings.get_boolean (&quot;lighting&quot;);
+
+    print (&quot;%s\n&quot;, greeting);
+    print (&quot;%d bottles of beer on the wall\n&quot;, bottles);
+    print (&quot;Is the light switched on? %s\n&quot;, lighting ? &quot;yes&quot; : &quot;no&quot;);
+
+    // Change notification for any key in the schema
+    settings.changed.connect ((key) =&gt; {
+        print (&quot;Key &apos;%s&apos; changed\n&quot;, key);
+    });
+
+    // Change notification for a single key
+    settings.changed[&quot;greeting&quot;].connect (() =&gt; {
+        print (&quot;New greeting: %s\n&quot;, settings.get_string (&quot;greeting&quot;));
+    });
+
+    // Setting keys
+    settings.set_int (&quot;bottles-of-beer&quot;, bottles - 1);
+    settings.set_boolean (&quot;lighting&quot;, !lighting);
+    settings.set_string (&quot;greeting&quot;, &quot;hello, world&quot;);
+
+    print (&quot;Please start &apos;dconf-editor&apos; and edit keys in /org/example/my-app/\n&quot;);
+
+    print (&quot;Or use &apos;gsettings&apos; and edit keys in /org/example/my-app/\n&quot;);
+
+    print (&quot;Ex:\n&quot;);
+
+    print (&quot;$ gsettings list-recursively | grep example\n&quot;);
+
+    /*
+    print (&quot;org.example.my-app bottles-of-beer 98\n&quot;);
+    print (&quot;org.example.my-app greeting &apos;hello, world&apos;\n&quot;);
+    print (&quot;org.example.my-app lighting true\n&quot;);
+    */
+
+    print (&quot;$ gsettings set org.example.my-app greeting &apos;hi&apos;\n&quot;);
+
+    print (&quot;$ gsettings list-recursively | grep example\n&quot;);
+
+    new MainLoop ().run ();
+}
+</code></pre><h2 id="&#x7DE8;&#x8B6F;">&#x7DE8;&#x8B6F;</h2>
+<p>&#x7DE8;&#x8B6F;</p>
+<p><a href="../../example/gio/gsettings/gsettings-start/build.sh">build.sh</a></p>
+<pre><code class="lang-sh">$ valac --pkg gio-<span class="hljs-number">2.0</span> gio-settings-demo.vala
+</code></pre>
+<h2 id="&#x57F7;&#x884C;">&#x57F7;&#x884C;</h2>
+<p>&#x958B;&#x4E00;&#x500B;&#x300C;Termianl_1&#x300D;</p>
+<p>&#x57F7;&#x884C;</p>
+<p><a href="../../example/gio/gsettings/gsettings-start/run..sh">run.sh</a></p>
+<pre><code class="lang-sh">$ gio-settings-demo
+</code></pre>
+<p>&#x986F;&#x793A;</p>
+<pre><code>hello, world
+98 bottles of beer on the wall
+Is the light switched on? no
+Key &apos;bottles-of-beer&apos; changed
+Key &apos;lighting&apos; changed
+Key &apos;greeting&apos; changed
+New greeting: hello, world
+Please start &apos;dconf-editor&apos; and edit keys in /org/example/my-app/
+Or use &apos;gsettings&apos; and edit keys in /org/example/my-app/
+Ex:
+$ gsettings list-recursively | grep example
+$ gsettings set org.example.my-app greeting &apos;hi&apos;
+$ gsettings list-recursively | grep example
+</code></pre><h2 id="&#x6E2C;&#x8A66;">&#x6E2C;&#x8A66;</h2>
+<p>&#x53E6;&#x5916;&#x958B;&#x4E00;&#x500B;&#x300C;Termianl_2&#x300D;</p>
+<p>&#x57F7;&#x884C;</p>
+<pre><code class="lang-sh">$ gsettings list-recursively | grep example
+</code></pre>
+<p>&#x986F;&#x793A;</p>
+<pre><code>org.example.my-app bottles-of-beer 98
+org.example.my-app greeting &apos;hello, world&apos;
+org.example.my-app lighting true
+</code></pre><p>&#x57F7;&#x884C;</p>
+<pre><code class="lang-sh">$ gsettings <span class="hljs-built_in">set</span> org.example.my-app greeting <span class="hljs-string">&apos;hi&apos;</span>
+</code></pre>
+<p>&#x5728;&#x300C;Terminal_1&#x300D;&#x5C31;&#x6703;&#x770B;&#x5230;&#x53CD;&#x61C9;&#xFF0C;&#x591A;&#x51FA;&#x4E0B;&#x9762;&#x5169;&#x884C;</p>
+<pre><code>Key &apos;greeting&apos; changed
+New greeting: hi
+</code></pre><p>&#x5728;&#x300C;Termianl_2&#x300D;</p>
+<p>&#x518D;&#x6B21;&#x57F7;&#x884C;</p>
+<pre><code class="lang-sh">$ gsettings list-recursively | grep example
+</code></pre>
+<p>&#x986F;&#x793A;</p>
+<pre><code>org.example.my-app bottles-of-beer 98
+org.example.my-app greeting &apos;hi&apos;
+org.example.my-app lighting true
+</code></pre><p>&#x57F7;&#x884C;</p>
+<pre><code class="lang-sh">$ gsettings reset org.example.my-app greeting
+</code></pre>
+<p>&#x518D;&#x6B21;&#x57F7;&#x884C;</p>
+<pre><code class="lang-sh">$ gsettings list-recursively | grep example
+</code></pre>
+<p>&#x986F;&#x793A;</p>
+<pre><code>org.example.my-app bottles-of-beer 98
+org.example.my-app greeting &apos;Hello, earthlings&apos;
+org.example.my-app lighting true
+</code></pre>
                     
                     </section>
                 
@@ -398,10 +528,8 @@
         </div>
 
         
-        <a href="../../content/file/file-get-contents.html" class="navigation navigation-prev " aria-label="Previous page: file get contents"><i class="fa fa-angle-left"></i></a>
+        <a href="../../content/gio/index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: gio"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../../content/gio/index.html" class="navigation navigation-next " aria-label="Next page: gio"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
